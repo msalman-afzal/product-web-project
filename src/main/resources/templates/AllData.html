@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 30px auto;
+            background: #fff;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2575fc;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Action buttons */
+        .update-btn, .delete-btn {
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #fff;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .update-btn { background-color: #007bff; } /* Blue */
+        .delete-btn { background-color: #dc3545; } /* Red */
+
+        /* Hover effect for Update & Delete */
+        .update-btn:hover, .delete-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+        /* Add Record button */
+        .add-btn {
+            display: block;
+            width: 160px;
+            margin: 25px auto;
+            padding: 12px;
+            text-align: center;
+            background: #28a745;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background: #218838;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <h2>Product List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Sale Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${data}">
+                <td th:text="${p.pid}"></td>
+                <td th:text="${p.pname}"></td>
+                <td th:text="${p.description}"></td>
+                <td th:text="${p.price}"></td>
+                <td th:text="${p.time}"></td>
+                <td class="action-buttons">
+                    <a th:href="@{/update/{id}(id=${p.pid})}" class="update-btn">Update</a>
+                    <a th:href="@{/delete/{id}(id=${p.pid})}" class="delete-btn">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Centered Add Record Button -->
+    <a href="/product" class="add-btn">➕ Add Record</a>
+</body>
+</html>

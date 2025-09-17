@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Form</title>
+  <style>
+    /* Page Background */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      margin: 0;
+      padding: 40px 0;  /* upar & niche space */
+      display: flex;
+      justify-content: center;
+      min-height: 100vh; /* screen cover kare but spacing ke sath */
+    }
+
+    /* Form Container */
+    .form-container {
+      background: #fff;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 420px;
+      animation: fadeIn 1s ease;
+    }
+
+    /* Heading */
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* Form Groups */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+      transition: 0.3s ease;
+      background: #f9f9f9;
+    }
+
+    /* Input focus effect */
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #667eea;
+      background: #fff;
+      box-shadow: 0 0 6px rgba(102,126,234,0.6);
+    }
+
+    /* Button Styling */
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Button Hover Effect */
+    .btn:hover {
+      background: linear-gradient(135deg, #5a67d8, #6b46c1);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    }
+
+    /* Button Glow Animation */
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.3);
+      transition: 0.5s;
+    }
+
+    .btn:hover::after {
+      left: 100%;
+    }
+
+    /* Fade in animation for form */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>✨ Product CRUD Page ✨</h2>
+    <form action="productForm" method="post">
+      
+      <div class="form-group">
+        <label for="pId">Product ID</label>
+        <input type="number" id="pId" name="pid" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pName">Product Name</label>
+        <input type="text" id="pName" name="pname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pDescription">Description</label>
+        <textarea id="pDescription" rows="2" name="description" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="pPrice">Price</label>
+        <input type="number" id="pPrice" name="price" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pSaleTime">Sale Time</label>
+        <input type="datetime-local" id="pSaleTime" name="time" required>
+      </div>
+
+      <button type="submit" class="btn">💾 Save Product</button>
+    </form>
+  </div>
+</body>
+</html>
